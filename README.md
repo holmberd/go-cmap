@@ -85,5 +85,6 @@ The buffer uses amortized background compaction to reclaim memory from deleted e
 
 ## Limitations
 - Max Key size is 64KB.
+- Max Value size is 25MB.
 - Key collisions follows last write wins, but reads are protected.
 - For use-cases where the median entry size is larger than the max supported chunk size, use a custom `cmap.ChunkPool` that supports larger chunk sizes for better performance.
