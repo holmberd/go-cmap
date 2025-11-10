@@ -47,4 +47,4 @@ This ensures that the space occupied by the dead entry is correctly accounted fo
 ## Adaptive Chunk Resizing
 Adaptive chunk resizing is used to reduce GOGC pressure by minimizing the number of chunks (pointers) that are stored in the buffer. As the buffer size grows and shrinks, the size of its chunks will grow and shrink depending on the config parameter `P`.
 
-As a general rule, larger chunks will reduce GC presure at the cost of higher potential memory waste. Using smaller chunks will have the opposite effect.
+As a general rule, larger chunks will reduce GC presure at the cost of higher potential memory waste. Using smaller chunks will have the opposite effect. See `config.go`.
