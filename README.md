@@ -79,9 +79,9 @@ CMap achieves high concurrency by sharding its keyspace into separate buckets, a
 
 Each bucket is designed to minimize memory overhead and reduce garbage collector pressure. Instead of storing full entry objects in Go maps, each bucket maintains an index that maps a key's 64-bit hash to its byte offset within a contiguous buffer. All entry data is packed into this underlying buffer in fixed-size memory chunks, and each chunk is allocated using `unix.Mmap`, which reserves a block of memory that is not part of the Go Heap memory.
 
-This approach ensures that the garbage collector only needs to track the small index map and chunk pointers, rather than scanning every individual entry. This significantly improves performance and reduces GC pauses, especially when managing a large number of entries.
+This approach ensures that the garbage collector only needs to track the small index map and chunk pointers, rather than scanning every individual entry. This improves performance and reduces GC pauses when storing a large number of entries.
 
-The buffer uses amortized background compaction to reclaim memory from deleted entries, and adaptive chunk resizing to reduce the amount of chunks required as the buffer grows and shrinks. See buffer's [README.md](https://github.com/holmberd/go-cmap/internal/buffer/README.md) for a more detailed breakdown of the buffer's architecture.
+The buffer uses amortized background compaction to reclaim memory from deleted entries, and adaptive chunk resizing to reduce the amount of chunks required as the buffer grows and shrinks. See buffer's [README.md](https://github.com/holmberd/go-cmap/blob/master/internal/buffer/README.md) for a more detailed breakdown of the buffer's architecture.
 
 ## Limitations
 - Max Key size is 64KB.
