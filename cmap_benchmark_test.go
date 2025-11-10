@@ -10,10 +10,7 @@ import (
 	"time"
 )
 
-// GOMAXPROCS=4 go clean -testcache && go test -bench=BenchmarkCMap -benchtime=10s -benchmem ./cmap
-// GOMAXPROCS=4 go test -bench=BenchmarkCMap -benchtime=5s -benchmem
-// GOMAXPROCS=4 go test -bench=BenchmarkCMap -benchtime=5s -benchmem ./cmap -cpuprofile=cmap.prof
-// go test -bench=. -cpuprofile=cpu.prof
+// GOMAXPROCS=4 go clean -testcache && go test -bench=BenchmarkCMap -benchtime=10s -benchmem .
 
 const benchItems = 1 << 16
 
